@@ -8,24 +8,54 @@
 </head>
 <body>
 
-  <div>
+ <!--  <div style="margin: 30px; border-style: dashed; border-color: blueviolet; padding: 15px;">
     <input type="text" #buscar name="" id="" placeholder="Buscar pelicula">
     <button type="button" (click)="getMoviesName(buscar)">Buscar</button>
   </div>
 
 
-  <div *ngFor="let item of movies">
-    <div>
+  <div *ngFor="let item of movies" style="margin: 20px; border: solid black; background-color: bisque;">
+    <div style="margin: 10px;">
       <img height="300px" src="https://image.tmdb.org/t/p/original/{{item.poster_path}}" alt="">
     </div>
-    <div>
-      <h1>  
+    <div style="margin: 10px;">
+      <h1 style="margin: 5px;">  
         {{item.title}}
       </h1>
-      <span>
+      <span style="margin: 5px;">
         {{item.overview}}
       </span>
     </div>
+  </div> -->
+
+  <div style="margin: 30px; border-style: dashed; border-color: blueviolet; padding: 15px;">
+    <input type="text" #buscarM name="" id="" placeholder="Buscar musica">
+    <button type="button" (click)="getMusic(buscarM)">Buscar</button>
   </div>
+
+  <div *ngFor="let items of music" style="margin: 20px; border: solid black; background-color: bisque;">
+    
+    <div style="margin: 10px;">
+      <h1 style="margin: 5px;">  
+        {{items.title}}
+      </h1>
+    
+      <span style="margin: 5px;">
+        {{items.duration}}
+      </span>
+      <div>
+        <img src="{{items.album.cover}}" alt="">
+      </div>
+      <div>
+        <audio 
+        src="{{items.preview}}" controls="controls" type="audio/mpeg" preload="preload">
+        </audio>
+      </div>
+      
+      
+      
+    </div>
+  </div>
+  
 </body>
 </html>

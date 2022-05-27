@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { PeliculasService } from "./servicios/peliculas.service";
+import { MusicaService } from "./servicios/musica.service";
+
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,10 @@ import { PeliculasService } from "./servicios/peliculas.service";
 export class AppComponent {
   title = 'proyectoAPI01';
   movies:any;
-  constructor(private peliculas:PeliculasService){}
+  music:any;
+  constructor(private peliculas:PeliculasService, private musica:MusicaService){}
+  
+  
 
 
   ngOnInit(): void {
@@ -20,6 +25,20 @@ export class AppComponent {
       next:(s)=>{
         this.movies = s.results;
         debugger
+      },
+      error: (e)=>{
+        debugger
+      }
+    })
+    
+    
+  }
+
+  getMusic(name:any){
+    this.musica.getMusic(name.value).subscribe({
+      next:(s)=>{
+        this.music = s.data;
+        console.log(s)
       },
       error: (e)=>{
         debugger
